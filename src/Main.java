@@ -25,7 +25,7 @@ public class Main {
         //--------------------------------------------------------------------------------------------------------------
         System.out.println(ContainsSubstring("Sentence","ten"));
         System.out.println("Correct output: true");
-        System.out.println(ContainsSubstring("Ending","end"));
+        System.out.println(ContainsSubstring("Lanyard","yard"));
         System.out.println("Correct output: true");
         //--------------------------------------------------------------------------------------------------------------
         System.out.println(ReverseString("ABCDEF"));
@@ -96,7 +96,19 @@ public class Main {
      * @return true if target found, false otherwise
      */
     public static boolean ContainsSubstring(String input, String target){
-        return input.toLowerCase().contains(target.toLowerCase());
+        /*
+        int inputLength = input.length();
+        int targetLength = target.length();
+        int maxLength = input.length() - target.length();
+        for(int i = 0; i <= maxlength; i++) {
+            String currentPortion = input.substring(i, i + targetLength);
+            if(currentPortion.equals(target)){
+                return true;
+        }
+    }
+    return false;
+         */
+        return input.contains(target);
     }
         //--------------------------------------------------------------------------------------------------------------
     /**
@@ -105,8 +117,15 @@ public class Main {
      * @return reversed input String
      */
     public static String ReverseString(String input){
+        String newString = "";
+        int inputLength = input.length();
+        for(int i = inputLength - 1; i >= 0; i--)
+        {
+            String character = input.substring(i, i+1);
+            newString += character;
 
-        return "";
+        }
+        return newString;
     }
         //--------------------------------------------------------------------------------------------------------------
     /**
@@ -116,6 +135,6 @@ public class Main {
      */
     public static boolean PalindromeChecker(String input){
 
-        return false;
+        return input.equals(ReverseString(input));
     }
 }
